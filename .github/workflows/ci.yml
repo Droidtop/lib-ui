@@ -65,3 +65,34 @@ jobs:
         with:
           persist-credentials: false
       - run: node --test contract/js/contract.test.mjs
+
+  # A green main whose version has no tag yet is released: CI tags v<version> on this commit, and that tag is
+  # what the programs pin (Droidtop/tracker#867 D2). To release, raise lib.version in gradle.properties (and the
+  # CHANGELOG) in the change that needs it; the Rust crate's version follows it.
+  release:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: [kotlin, rust, python, js]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Tag this version if it is new
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -eu
+          version="$(sed -n 's/^lib\.version=//p' gradle.properties)"
+          crate="$(sed -n 's/^version = "\(.*\)"$/\1/p' contract/rust/Cargo.toml | head -1)"
+          [ -n "$version" ] || { echo "no lib.version in gradle.properties" >&2; exit 1; }
+          [ "$version" = "$crate" ] || { echo "contract/rust is $crate but lib.version is $version" >&2; exit 1; }
+          tag="v$version"
+          if gh api "repos/$REPO/git/ref/tags/$tag" >/dev/null 2>&1; then
+            echo "$tag is already released"
+          else
+            gh api -X POST "repos/$REPO/git/refs" -f ref="refs/tags/$tag" -f sha="$GITHUB_SHA" >/dev/null
+            echo "released $tag at $GITHUB_SHA"
+          fi

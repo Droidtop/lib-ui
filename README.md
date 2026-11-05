@@ -28,5 +28,6 @@ Work lands on `main` from `ci/*` branches once CI is green.
 
 ## Versions
 
-The library's version is `lib.version` in `gradle.properties`; the Rust crate's version follows it. Each
-program pins a tag (`vX.Y.Z`).
+The library's version is `lib.version` in `gradle.properties`; the Rust crate's version follows it, and CI
+fails if they differ. A release is a tag `vX.Y.Z`: CI creates it on a green `main` whose version is not yet
+tagged, so to release, raise the version (and the CHANGELOG) in the change that needs it. Each program pins a tag.
