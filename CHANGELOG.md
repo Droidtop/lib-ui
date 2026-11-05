@@ -3,6 +3,14 @@
 All notable changes to lib-ui. Versions follow [Semantic Versioning](https://semver.org/)
 (in 0.x, only a new minor version may break the interface; CI enforces it).
 
+## [0.2.1]
+
+### Added
+- `tokens/`: `ThemePalette` (every colour role a UI draws, plus a theme's typefaces and texture, and droidtop's own
+  palette as `DEFAULT`), `FocusRingInks` and `noticeColors`/`noticeInputs`. They are droidtop runtime-common's
+  `GamingThemeColors`, `FocusRingInks` and `NoticeInputs.kt`, moved unchanged but for the palette's name, so the
+  shared UI reads a palette without droidtop's theme engine (Droidtop/tracker#867, ui-shared step 2). New tests.
+
 ## [0.2.0]
 
 ### Added
