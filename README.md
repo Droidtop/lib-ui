@@ -29,6 +29,14 @@ Work lands on `main` from `ci/*` branches once CI is green.
 
 ## Versions
 
+**The interface stays compatible within a version** (Droidtop/tracker#867, owner 2026-11-04: "I should be able to
+bump the version number and immediately get the benefit"). A program takes a fix by moving its pin, with no change to
+its own code. Each Kotlin module's public API is checked in as `<module>/api/<module>.api` (the Kotlin
+binary-compatibility validator): `./gradlew apiCheck` fails when the API is not its dump, and `./gradlew apiDump`
+rewrites it. `scripts/check-api-compat.sh` fails when a dump line was removed since the last release, and
+`cargo-semver-checks` does the same for the Rust contract, unless the version is a new minor (in 0.x) and the
+CHANGELOG says what broke. Adding to the API only needs the new dump.
+
 The library's version is `lib.version` in `gradle.properties`; the Rust crate's version follows it, and CI
 fails if they differ. A release is a tag `vX.Y.Z`: CI creates it on a green `main` whose version is not yet
 tagged, so to release, raise the version (and the CHANGELOG) in the change that needs it. Each program pins a tag.

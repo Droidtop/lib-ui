@@ -1,0 +1,138 @@
+public final class dev/droidtop/notices/ColorMath {
+	public static final field BLACK I
+	public static final field INSTANCE Ldev/droidtop/notices/ColorMath;
+	public static final field TEXT_FLOOR D
+	public static final field WHITE I
+	public final fun alpha (I)I
+	public final fun blue (I)I
+	public final fun ensure (ILjava/util/List;D)I
+	public final fun ensureFill (IIDI)I
+	public final fun green (I)I
+	public final fun luminance (I)D
+	public final fun mix (IID)I
+	public final fun over (II)I
+	public final fun pickOn (I)I
+	public final fun ratio (II)D
+	public final fun red (I)I
+	public final fun rgb (III)I
+	public final fun saturation (I)D
+	public final fun withAlpha (II)I
+	public final fun worstRatio (ILjava/util/List;)D
+}
+
+public final class dev/droidtop/notices/ColorVision {
+	public static final field INSTANCE Ldev/droidtop/notices/ColorVision;
+	public final fun getALL ()Ljava/util/List;
+	public final fun getSIMULATIONS ()Ljava/util/List;
+	public final fun hueApart (IILdev/droidtop/notices/ColorVision$Sim;)D
+	public static synthetic fun hueApart$default (Ldev/droidtop/notices/ColorVision;IILdev/droidtop/notices/ColorVision$Sim;ILjava/lang/Object;)D
+	public final fun lab (ILdev/droidtop/notices/ColorVision$Sim;)[D
+	public static synthetic fun lab$default (Ldev/droidtop/notices/ColorVision;ILdev/droidtop/notices/ColorVision$Sim;ILjava/lang/Object;)[D
+	public final fun lightnessApart (IILdev/droidtop/notices/ColorVision$Sim;)D
+	public static synthetic fun lightnessApart$default (Ldev/droidtop/notices/ColorVision;IILdev/droidtop/notices/ColorVision$Sim;ILjava/lang/Object;)D
+}
+
+public final class dev/droidtop/notices/ColorVision$Sim : java/lang/Enum {
+	public static final field DEUTERANOPIA Ldev/droidtop/notices/ColorVision$Sim;
+	public static final field NORMAL Ldev/droidtop/notices/ColorVision$Sim;
+	public static final field PROTANOPIA Ldev/droidtop/notices/ColorVision$Sim;
+	public static final field TRITANOPIA Ldev/droidtop/notices/ColorVision$Sim;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Ldev/droidtop/notices/ColorVision$Sim;
+	public static fun values ()[Ldev/droidtop/notices/ColorVision$Sim;
+}
+
+public final class dev/droidtop/notices/Hsl {
+	public static final field INSTANCE Ldev/droidtop/notices/Hsl;
+	public final fun fillFor (IID)Ljava/lang/Integer;
+	public final fun fromHsl (DDD)I
+	public final fun readableByCloseness (IDLkotlin/jvm/functions/Function1;)Ljava/util/List;
+	public final fun readableNearest (IDLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/lang/Integer;
+	public final fun toHsl (I)[D
+	public final fun withLightness (IDLkotlin/jvm/functions/Function1;)I
+}
+
+public final class dev/droidtop/notices/NoticeChecks {
+	public static final field INSTANCE Ldev/droidtop/notices/NoticeChecks;
+	public final fun hueMoved (Ldev/droidtop/notices/NoticeInputs;Ldev/droidtop/notices/NoticeColors;D)Ljava/util/List;
+	public static synthetic fun hueMoved$default (Ldev/droidtop/notices/NoticeChecks;Ldev/droidtop/notices/NoticeInputs;Ldev/droidtop/notices/NoticeColors;DILjava/lang/Object;)Ljava/util/List;
+	public final fun reachable (Ljava/util/List;D)Z
+	public final fun tooClose (Ldev/droidtop/notices/NoticeColors;)Ljava/util/List;
+	public final fun unreadable (Ldev/droidtop/notices/NoticeInputs;Ldev/droidtop/notices/NoticeColors;D)Ljava/util/List;
+}
+
+public final class dev/droidtop/notices/NoticeColors {
+	public static final field CAUTION_DARK I
+	public static final field CAUTION_LIGHT I
+	public static final field CAUTION_PLATE_MIX D
+	public static final field Companion Ldev/droidtop/notices/NoticeColors$Companion;
+	public static final field DANGER_PLATE_MIX D
+	public static final field HIGH_CONTRAST_FLOOR D
+	public static final field INFO_PLATE_MIX D
+	public static final field NEAR_HUE D
+	public static final field NEAR_LSTAR D
+	public fun <init> (IIIIIIIIIIIZIZ)V
+	public final fun component1 ()I
+	public final fun component10 ()I
+	public final fun component11 ()I
+	public final fun component12 ()Z
+	public final fun component13 ()I
+	public final fun component14 ()Z
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun component4 ()I
+	public final fun component5 ()I
+	public final fun component6 ()I
+	public final fun component7 ()I
+	public final fun component8 ()I
+	public final fun component9 ()I
+	public final fun copy (IIIIIIIIIIIZIZ)Ldev/droidtop/notices/NoticeColors;
+	public static synthetic fun copy$default (Ldev/droidtop/notices/NoticeColors;IIIIIIIIIIIZIZILjava/lang/Object;)Ldev/droidtop/notices/NoticeColors;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCautionInk ()I
+	public final fun getCautionPlate ()I
+	public final fun getDangerFill ()I
+	public final fun getDangerInk ()I
+	public final fun getDangerPlate ()I
+	public final fun getInfoInk ()I
+	public final fun getInfoNeutral ()Z
+	public final fun getInfoPlate ()I
+	public final fun getMuted ()I
+	public final fun getOnCaution ()I
+	public final fun getOnDanger ()I
+	public final fun getOnDangerFill ()I
+	public final fun getOnInfo ()I
+	public final fun getSeparated ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/droidtop/notices/NoticeColors$Companion {
+	public final fun derive (Ldev/droidtop/notices/NoticeInputs;Z)Ldev/droidtop/notices/NoticeColors;
+	public static synthetic fun derive$default (Ldev/droidtop/notices/NoticeColors$Companion;Ldev/droidtop/notices/NoticeInputs;ZILjava/lang/Object;)Ldev/droidtop/notices/NoticeColors;
+}
+
+public final class dev/droidtop/notices/NoticeInputs {
+	public fun <init> (IIIIIII)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun component4 ()I
+	public final fun component5 ()I
+	public final fun component6 ()I
+	public final fun component7 ()I
+	public final fun copy (IIIIIII)Ldev/droidtop/notices/NoticeInputs;
+	public static synthetic fun copy$default (Ldev/droidtop/notices/NoticeInputs;IIIIIIIILjava/lang/Object;)Ldev/droidtop/notices/NoticeInputs;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAccent ()I
+	public final fun getCard ()I
+	public final fun getDanger ()I
+	public final fun getGround ()I
+	public final fun getOnSurface ()I
+	public final fun getOnSurfaceMuted ()I
+	public final fun getOverlaySurface ()I
+	public fun hashCode ()I
+	public final fun isLight ()Z
+	public fun toString ()Ljava/lang/String;
+}
+

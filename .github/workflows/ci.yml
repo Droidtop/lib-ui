@@ -32,7 +32,7 @@ jobs:
           distribution: temurin
           java-version: 17
       - uses: gradle/actions/setup-gradle@ed408507eac070d1f99cc633dbcf757c94c7933a # v4
-      - run: ./gradlew test --stacktrace
+      - run: ./gradlew test apiCheck --stacktrace
 
   rust:
     runs-on: ubuntu-24.04
@@ -42,6 +42,7 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
+          fetch-depth: 0
           persist-credentials: false
       - uses: dtolnay/rust-toolchain@6bed0761d98439e5a578e2877258200ad565ba87 # stable
         with:
@@ -49,6 +50,28 @@ jobs:
       - run: cargo fmt -- --check
       - run: cargo clippy --all-targets -- -D warnings
       - run: cargo test
+      # The Rust contract stays compatible within a version: cargo-semver-checks against the last release.
+      - uses: taiki-e/install-action@0e09747a63ae497bf945b3dcaf38fef0050d0109 # v2.62.0
+        with:
+          tool: cargo-semver-checks@0.51.0
+      - name: No breaking change without a version that says so
+        run: |
+          set -eu
+          last="$(git describe --tags --abbrev=0 --match 'v[0-9]*' HEAD 2>/dev/null || true)"
+          if [ -z "$last" ]; then echo "nothing released yet; nothing to compare"; exit 0; fi
+          cargo semver-checks check-release --baseline-rev "$last"
+
+  # The Kotlin API stays compatible within a version (Droidtop/tracker#867, owner 2026-11-04: "I should be able to
+  # bump the version number and immediately get the benefit"): an API line removed since the last release fails
+  # unless lib.version is a breaking version and the CHANGELOG says what broke.
+  api-compat:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - run: scripts/check-api-compat.sh
 
   python:
     runs-on: ubuntu-24.04
@@ -71,7 +94,7 @@ jobs:
   # CHANGELOG) in the change that needs it; the Rust crate's version follows it.
   release:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: [kotlin, rust, python, js]
+    needs: [kotlin, rust, api-compat, python, js]
     runs-on: ubuntu-24.04
     permissions:
       contents: write
