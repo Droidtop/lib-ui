@@ -22,3 +22,6 @@ include(":notices")
 
 // The palette a theme resolves to and the maths over it, shared by every UI (Droidtop/tracker#867). Plain JVM.
 include(":tokens")
+
+// The one formatter for every value a person reads: sizes, durations, counts, times (Droidtop/tracker#867). Plain JVM.
+include(":format")

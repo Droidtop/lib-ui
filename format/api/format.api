@@ -1,0 +1,41 @@
+public final class dev/droidtop/lib/ui/format/ValueFormat {
+	public static final field INSTANCE Ldev/droidtop/lib/ui/format/ValueFormat;
+	public final fun ago (JJ)Ljava/lang/String;
+	public final fun count (J)Ljava/lang/String;
+	public final fun daysAgo (JJ)Ljava/lang/String;
+	public final fun duration (JLjava/lang/String;)Ljava/lang/String;
+	public static synthetic fun duration$default (Ldev/droidtop/lib/ui/format/ValueFormat;JLjava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+	public final fun durationSpoken (JLjava/lang/String;)Ljava/lang/String;
+	public static synthetic fun durationSpoken$default (Ldev/droidtop/lib/ui/format/ValueFormat;JLjava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+	public final fun freeOf (JJ)Ljava/lang/String;
+	public final fun percent (F)Ljava/lang/String;
+	public final fun remaining (J)Ljava/lang/String;
+	public final fun size (J)Ljava/lang/String;
+	public final fun sizeOrBlank (J)Ljava/lang/String;
+	public final fun time (JZLjava/util/TimeZone;)Ljava/lang/String;
+	public static synthetic fun time$default (Ldev/droidtop/lib/ui/format/ValueFormat;JZLjava/util/TimeZone;ILjava/lang/Object;)Ljava/lang/String;
+}
+
+public final class dev/droidtop/lib/ui/format/ValueFormat$State : java/lang/Enum {
+	public static final field CONNECTED Ldev/droidtop/lib/ui/format/ValueFormat$State;
+	public static final field Companion Ldev/droidtop/lib/ui/format/ValueFormat$State$Companion;
+	public static final field DISCONNECTED Ldev/droidtop/lib/ui/format/ValueFormat$State;
+	public static final field FAILED Ldev/droidtop/lib/ui/format/ValueFormat$State;
+	public static final field INSTALLED Ldev/droidtop/lib/ui/format/ValueFormat$State;
+	public static final field NOT_INSTALLED Ldev/droidtop/lib/ui/format/ValueFormat$State;
+	public static final field OFF Ldev/droidtop/lib/ui/format/ValueFormat$State;
+	public static final field ON Ldev/droidtop/lib/ui/format/ValueFormat$State;
+	public static final field RUNNING Ldev/droidtop/lib/ui/format/ValueFormat$State;
+	public static final field STOPPED Ldev/droidtop/lib/ui/format/ValueFormat$State;
+	public static final field UNKNOWN Ldev/droidtop/lib/ui/format/ValueFormat$State;
+	public static final field WAITING Ldev/droidtop/lib/ui/format/ValueFormat$State;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getLabel ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Ldev/droidtop/lib/ui/format/ValueFormat$State;
+	public static fun values ()[Ldev/droidtop/lib/ui/format/ValueFormat$State;
+}
+
+public final class dev/droidtop/lib/ui/format/ValueFormat$State$Companion {
+	public final fun of (Ljava/lang/String;)Ldev/droidtop/lib/ui/format/ValueFormat$State;
+}
+

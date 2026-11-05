@@ -3,6 +3,13 @@
 All notable changes to lib-ui. Versions follow [Semantic Versioning](https://semver.org/)
 (in 0.x, only a new minor version may break the interface; CI enforces it).
 
+## [0.2.2]
+
+### Added
+- `format/`: `ValueFormat`, droidtop runtime-common's one formatter for sizes, durations, counts and times, moved
+  unchanged with its test (Droidtop/tracker#867). It is what the plugin API's facets format their values with, so
+  the facet model can move to lib-plugins next.
+
 ## [0.2.1]
 
 ### Added
