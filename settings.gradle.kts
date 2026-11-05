@@ -16,3 +16,6 @@ dependencyResolutionManagement {
 // The backend contract every UI speaks (contract/README.md); plain JVM.
 include(":contract")
 project(":contract").projectDir = file("contract/kotlin")
+
+// The notice colours shared by droidtop and Enginehost (Droidtop/notices, moved here with its history).
+include(":notices")

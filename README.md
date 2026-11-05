@@ -7,7 +7,8 @@ tagged release of each library it uses (#867 D2).
 | Part | Holds | Status |
 |---|---|---|
 | [`contract/`](contract/README.md) | The backend contract every UI speaks: `ok`, `unavailable`, `error` or `pending` (#867 D8), in Kotlin, Rust, Python and JavaScript, tested against one set of fixtures | **here** |
-| Compose Multiplatform components | droidtop's `ui-shared` and Droidtop/notices, for Android and desktop | next (#867 step 3) |
+| [`notices/`](notices/README.md) | The notice colours: info, caution and danger inks, plates and the danger fill, derived from a theme's colours to stay readable and apart under colour-vision simulations (Droidtop/notices, moved here with its history). Plain JVM | **here** |
+| Compose Multiplatform components | droidtop's `ui-shared`, for Android and desktop | next (#867 step 3) |
 | Design tokens | one source generating `DesignTokens.kt` and the test UI's `tokens.css` | next (#867 step 3) |
 | HTML test UI and bench | an HTML representation of the UI for prototyping and testing, rendered locally only, seeded from Pythia's web UI (#867 D9, D12) | next (#867 step 3) |
 
